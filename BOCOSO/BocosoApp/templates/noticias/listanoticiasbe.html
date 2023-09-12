@@ -1,0 +1,51 @@
+{% extends 'mainpage.html' %}
+{% load static %}
+{% block content %}
+
+<div class="album py-5 bg-light">
+  {% if user.rol %}
+  {% if user.rol.id == 1 or user.rol.id == 2 %}
+  <div class="container text-end" style="margin-bottom: 2em;">
+    <a href="{% url 'noticias:crear-noticia-be' %}" class="btn btn-primary rounded-pill px-3">Nueva</a>
+  </div>
+  {%endif%}
+  {%endif%}
+  <div class="container">
+    <div class="row">
+      {% for noticia in noticias %}
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          {% if noticia.portada %}
+          <img class="card-img-top" style="height: 15em;" src="{{ noticia.portada.url }}" alt="Card image cap">
+
+          {% else %}
+          <img class="card-img-top" style="height: 15em;" src="{% static 'src/img/EPT-Logo.png' %}"
+            alt="Card image cap">
+          {% endif %}
+
+          <div class="card-body">
+            <p class="card-text">{{ noticia.titulo|slice:"0:40" }}...</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a type="button" class="btn btn-sm btn-outline-secondary"
+                  href="{% url 'noticias:noticia' noticia.id %}">Leer</a>
+                {% if user.rol %}
+                {% if user.rol.id == 1 or user.rol.id == 2 %}
+                <a type="button" class="btn btn-sm btn-outline-secondary"
+                  href="{% url 'noticias:editar-noticia' noticia.id %}">Editar</a>
+                <a type="button" class="btn btn-sm btn-outline-danger"
+                  href="{% url 'noticias:borrar-noticia' noticia.id %}">Borrar</a>
+                {% endif %}
+                {% endif %}
+              </div>
+              <small class="text-muted">{{ noticia.fecha }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

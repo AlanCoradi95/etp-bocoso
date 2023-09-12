@@ -1,0 +1,30 @@
+{% extends 'mainpage.html' %} {% block content %}
+
+<main style="margin-top: 2em" class="container col-lg-4 text-lg-center border border-primary rounded">
+  <form method="post">
+    {% csrf_token %}
+    <!-- TOKEN DE SEGURIDAD -->
+    <h1 class="h3 mb-3 fw-normal">Ingresar</h1>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" name="username" />
+      <label for="floatingInput">Usuario</label>
+    </div>
+    <br />
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" name="password" />
+      <label for="floatingPassword">Contraseña</label>
+    </div>
+    <br />
+    <p style="display: flex">
+      <button class="btn btn-primary w-100 rounded-pill px-3" type="submit">Aceptar</button>
+      <a class="btn btn-secondary w-50 rounded-pill px-3" href="{% url 'index' %}">Cancelar</a>
+    </p>
+    <p>
+      <a class="btn btn-outline-info rounded-pill px-3" type="submit" style="padding-left: 15px"
+        href="{% url 'usuarios:registro' %}">Registrarme</a>
+    </p>
+  </form>
+</main>
+
+{% endblock content %}

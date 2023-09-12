@@ -1,0 +1,36 @@
+{% extends 'mainpage.html' %}
+
+{% block content %}
+<div style="margin-top: 2em;" class="container border border-primary rounded">
+    {% if user.rol %}
+    {% if user.rol.id == 1 or user.rol.id == 2 %}
+    <div class="container text-end" style="margin-top: 1em;">
+        <a href="{% url 'niveducativos:crear-nivel' %}" class="btn btn-primary rounded-pill px-3">Nuevo</a>
+    </div>
+    {%endif%}
+    {%endif%}
+    <caption>Lista de Niveles Educativos</caption>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for niv in niveducativos %}
+            <tr>
+                <th scope="row">{{ niv.id }}</th>
+                <td>{{ niv.nombre }}</td>
+                <td>
+                    <a type="button" class="btn btn-outline-danger"
+                        href="{% url 'niveducativos:borrar-nivel' niv.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

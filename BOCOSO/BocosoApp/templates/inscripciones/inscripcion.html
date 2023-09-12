@@ -1,0 +1,55 @@
+{% extends 'mainpage.html' %}
+
+{% block content %}
+<main style="margin-top: 2em" class="container col-lg-4 text-lg-center border border-primary rounded">
+  <h1 class="fst-italic">Inscribirse</h1>
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="inputNombre">Nombre</label>
+        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" name="nombre">
+      </div>
+      <div class="form-group">
+        <label for="inputApellido">Apellido</label>
+        <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" name="apellido">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">DNI</label>
+      <input type="number" class="form-control" id="inputAddress" placeholder="99.999.999" name="dni">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Teléfono</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="36249999" name="telefono">
+    </div>
+    <div class="form-group">
+      <label for="id_email">Email</label>
+      <input type="email" class="form-control" id="id_email" placeholder="ejemplo@ejemplo.com" name="email">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Dirección</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Calle Falsa 123" name="direccion">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="inputState">Nivel Educativo</label>
+
+        <select id="inputState" class="form-control" name="niveducativo">
+          <option selected>Elija uno...</option>
+          {% for niv in niveducativos %}
+
+          <option value="{{niv.id}}">{{ niv }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+    </div>
+    <div class="text-end" style="margin-top: 1em;">
+      <input type="submit" value="Confirmar" class="btn btn-primary rounded-pill px-3">
+      <a href="{% url 'noticias:lista-noticias' %}" class="btn btn-secondary rounded-pill px-3">Cancelar</a>
+    </div>
+  </form>
+</main>
+{% endblock content %}

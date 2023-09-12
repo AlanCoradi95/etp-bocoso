@@ -1,0 +1,22 @@
+{% extends 'mainpage.html' %} {% block content %}
+
+<main style="margin-top: 2em" class="container col-lg-4 text-lg-center border border-primary rounded">
+    <form method="post">
+        {% csrf_token %}
+        <!-- TOKEN DE SEGURIDAD -->
+        <h1 class="h3 mb-3 fw-normal">Nuevo Nivel Educativo</h1>
+
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" name="nombre" />
+            <label for="floatingInput">Nombre</label>
+        </div>
+        <br />
+        <br />
+        <div class="text-end">
+            <button class="btn btn-primary  rounded-pill px-3" type="submit">Aceptar</button>
+            <a class="btn btn-secondary rounded-pill px-3" href="{% url 'index' %}">Cancelar</a>
+        </div>
+    </form>
+</main>
+
+{% endblock content %}

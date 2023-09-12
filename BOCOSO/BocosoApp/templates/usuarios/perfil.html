@@ -1,0 +1,48 @@
+{% extends 'mainpage.html' %}
+
+{% block content %}
+<main style="margin-top: 2em" class="container col-lg-10 border border-primary rounded">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="d-flex flex-row mb-3" style="margin-top: 1em;">
+            {% if user.foto %}
+            <div class="mb-3 border border-secondary rounded col-lg-4">
+                <div class="p-2 ">
+                    <img src="{{ user.foto.url }}" style="object-fit: contain;" width="100%">
+                </div>
+                {% endif %}
+                <div class="p-2">
+                    <input type="file" class="form-control" id="id_usuario_foto" name="foto">
+                </div>
+            </div>
+
+            <div class="p-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" name="first_name"
+                        value="{{ user.first_name }}" />
+                    <label for="floatingInput">Nombre</label>
+                </div>
+                <div class="form-floating" style="margin-top: 1em;">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Nombre" name="last_name"
+                        value="{{ user.last_name }}" />
+                    <label for="floatingInput">Apellido</label>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="email" name="email"
+                        value="{{ user.email }}" />
+                    <label for="floatingInput">Email</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container text-end">
+            <input type="submit" value="Confirmar" class="btn btn-primary rounded-pill px-3">
+            <a href="{% url 'index' %}" class="btn btn-secondary rounded-pill px-3">Cancelar</a>
+        </div>
+    </form>
+
+</main>
+{% endblock content %}

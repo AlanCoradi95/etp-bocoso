@@ -1,0 +1,239 @@
+{% extends 'mainpage.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+      aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="{% static 'src/img/edu-inicial-1.jpg' %}" alt="" width="100%" height="85%">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1 style="text-shadow: 2px 2px 5px black;">Educar para Transformar</h1>
+          <p>Centro Educativo</p>
+          <p><a class="btn btn-lg btn-primary" href="#id_quienes_somos">Saber más</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <!--svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg-->
+      <img src="{% static 'src/img/edu-inicial-2.jpg' %}" alt="" width="100%" height="85%">
+      <div class="container">
+        <div class="carousel-caption">
+          <h3 style="text-shadow: 2px 2px 5px black;">Inspiramos, desafiamos y empoderamos a todos nuestros alumnos</p>
+            <h3 style="text-shadow: 2px 2px 5px black;">a ser miembros comprometidos y éticos de una comunidad global
+              </p>
+              <h3 style="text-shadow: 2px 2px 5px black;">para que se conviertan en agentes de cambio conscientes de sí
+                </p>
+                <h3 style="text-shadow: 2px 2px 5px black;">mismos, seguros, innovadores y colaborativos.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <!--svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg-->
+      <img src="{% static 'src/img/edu-secundaria-1.jpg' %}" width="100%" height="85%">
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1 style="text-shadow: 2px 2px 5px black;">Sé parte de nuestra comunidad</h1>
+          <p></p>
+          <p><a class="btn btn-lg btn-primary" href="{% url 'inscripciones:inscripcion' %}">Inscribirse</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- QUIENES SOMOS -->
+<div class="container">
+  <hr style="margin-top: 2em;">
+</div>
+<div class="container fst-italic" style="margin-top: 2em;">
+  <div class="text-center">
+    <a id="id_quienes_somos"></a>
+    <h1>- ¿Quiénes somos? -</h1>
+  </div>
+  <p>"EDUCAR PARA TRANSFORMAR" tiene como objetivo principal brindar una educación integral y de excelencia a niños,
+    niñas
+    y jóvenes, promoviendo su desarrollo académico, personal y social. Nuestra institución se basa en valores como la
+    responsabilidad, el respeto, la inclusión y la innovación pedagógica.</p>
+  <p>Nuestro equipo de educadores está altamente capacitado y comprometido con la formación de nuestros estudiantes.
+    Buscamos
+    fomentar el pensamiento crítico, la creatividad y la capacidad de resolver problemas en nuestros alumnos,
+    preparándolos
+    para enfrentar los desafíos del mundo actual y futuro.</p>
+  <p>En "EDUCAR PARA TRANSFORMAR" creemos en la importancia de la educación como motor de cambio y desarrollo para la
+    sociedad. Nuestro compromiso es formar ciudadanos conscientes, éticos y comprometidos con el bienestar de la
+    comunidad.</p>
+
+  <p>Además de una sólida formación académica, ofrecemos actividades extracurriculares y espacios para el desarrollo de
+    habilidades artísticas, deportivas y culturales, con el fin de enriquecer la experiencia educativa de nuestros
+    estudiantes.</p>
+
+  <p>Nos enorgullece ser parte de la comunidad educativa de Resistencia y contribuir al crecimiento y desarrollo de
+    nuestros
+    estudiantes. Trabajamos día a día para cumplir nuestra misión de educar para transformar y ser un referente de
+    calidad
+    educativa en la región.</p>
+</div>
+<!-- FIN QUIENES SOMOS -->
+
+<!-- NIVELES EDUCATIVOS -->
+<div class="container">
+  <hr style="margin-top: 2em;">
+</div>
+<div class="container text-center">
+  <a id="id_niveles_educativos"></a>
+  <h2 class="fst-italic">- Niveles educativos -</h2>
+</div>
+<div class="container d-flex flex-row" style="margin-top: 2em;">
+  <div class="col-lg-4">
+    <img src="{% static 'src/img/edu-inicial-3.jpg' %}" alt="Imagen Inicial" style="object-fit: contain; width: 100%  ;"
+      height="200px">
+  </div>
+  <div class="col-lg-4">
+    <img src="{% static 'src/img/edu-primaria-1.jpg' %}" alt="Imagen Primario"
+      style="object-fit: contain; width: 100%  ;" height="200px">
+
+  </div>
+  <div class=" col-lg-4">
+    <img src="{% static 'src/img/edu-secundaria-2.jpg' %}" alt="Imagen Secundario"
+      style="object-fit: contain; width: 100%  ;" height="200px">
+  </div>
+</div>
+<div class="container text-center fst-italic" style="margin-top: 1em;">
+  <p>En la actualidad en "EDUCAR PARA TRANSFORMAR" contamos con los niveles educativos:</p>
+  <p>• Inicial</p>
+  <p>• Primario</p>
+  <p>• Secundario</p>
+</div>
+
+<div class="col-12">
+  <div class="d-flex flex-row justify-content-between">
+    <div class="p-2 col-lg-4">
+      <img src="{% static 'src/img/atletismo-1.jpg' %}" height="250px" class="rounded">
+    </div>
+    <div class="p-2 col-lg-4">
+      <img src="{% static 'src/img/futbol-1.jpg' %}" height="250px" class="rounded">
+    </div>
+    <div class="p-2 col-lg-4">
+      <img src="{% static 'src/img/natacion-1.jpg' %}" height="250px" class="rounded">
+    </div>
+  </div>
+  <br>
+  <div class="d-flex flex-row justify-content-between">
+    <div class="col-lg-4">
+      <img src="{% static 'src/img/voley-1.jpg' %}" height="250px" class="rounded">
+    </div>
+    <div class="col-lg-4">
+      <img src="{% static 'src/img/danza-1.jpg' %}" height="250px" class="rounded">
+    </div>
+    <div class="col-lg-4">
+      <img src="{% static 'src/img/comedor-1.jpg' %}" height="250px" class="rounded">
+    </div>
+  </div>
+</div>
+<br>
+<div class="text-center">
+  <p class="fst-italic">Además, en EDUCAR PARA TRANSFORMAR, contamos con...</p>
+</div>
+<div class="container d-flex flex-row fst-italic justify-content-between">
+  <div>
+    <ul style="color: #198754;">
+      Servicio de apoyo estudiantil
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <span style="color: #d63384;">Idiomas:</span>
+      <li>Inglés</li>
+      <li>Portugués</li>
+    </ul>
+  </div>
+  <div>
+    <ul><span style="color: #fd7e14;">Instalaciones:</span>
+      <li>Pileta de natación</li>
+      <li>Canchas de fútbol</li>
+      <li>Pista de atletismo</li>
+      <li>Gimansio cubierto</li>
+      <li>Comedor</li>
+    </ul>
+  </div>
+  <div>
+    <ul><span style="color: #0d6efd;">Deportes:</span>
+      <li>Atletismo</li>
+      <li>Nataci&oacute;n</li>
+      <li>F&uacute;tbol</li>
+      <li>Artes Marciales</li>
+      <li>V&oacute;leibol</li>
+      <li>Danza</li>
+      <li>B&aacute;squet</li>
+      <li>Ajedr&eacute;s</li>
+    </ul>
+  </div>
+  <div>
+    <ul><span style="color: #6610f2;">Otros servicios:</span>
+      <li>Servicio de Micros de traslado</li>
+      <li>Laboratorios de computaci&oacute;n, f&iacute;sica y qu&iacute;mica.</li>
+      <li>Comedor</li>
+      <li>Enfermer&iacute;a</li>
+    </ul>
+  </div>
+</div>
+<!-- FIN NIVELES EDUCATIVOS -->
+
+<!-- CONTACTO -->
+<div class="container">
+  <hr style="margin-top: 2em;">
+</div>
+<div class="container d-flex flex-row">
+  <div class="col-lg-4 border text-center border border-primary rounded">
+    <a id="id_contacto"></a>
+    <h3 class="fst-italic">Contáctanos</h3>
+    <div>
+      <p style="color:#0d6efd;"><i style="font-size: x-large" class="fa-brands fa-facebook"></i> Educar para Transformar
+      </p>
+    </div>
+    <div>
+      <p style="color:#d63384;"><i style="font-size: x-large" class="fa-brands fa-instagram"></i> Educar para
+        Transformar
+      </p>
+    </div>
+    <div>
+      <p style="color:#198754;"><i style="font-size: x-large" class="fa-brands fa-whatsapp"></i> 0362 - 154556677
+      </p>
+    </div>
+    <div>
+      <p style="color:#dc3545;"><i style="font-size: x-large" class="fa-solid fa-envelope"></i>
+        educar@transformar.com.ar
+      </p>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+  <div class="col-lg-6">
+    <div style="width: 100%"><iframe width="100%" height="250px" frameborder="0" scrolling="no" marginheight="0"
+        marginwidth="0"
+        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=-27.25630820423997,-58.86611938476563+(Educar%20para%20Transformar)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+          href="https://www.maps.ie/population/">Population Estimator map</a></iframe></div>
+  </div>
+</div>
+
+<!-- FIN CONTACTO -->
+{% endblock content %}

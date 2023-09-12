@@ -1,0 +1,21 @@
+{% extends 'noticias/noticia.html' %}
+
+{% block eliminar %}
+<div class="text-center alert alert-danger border border-danger rounded">
+<form method="post">{% csrf_token %}
+
+
+
+
+    <p>Confirme la eliminación</p>
+
+
+
+
+    <input type="submit" value="Confirmar" class="btn btn-primary rounded-pill px-3">
+    <a href="{% url 'noticias:lista-noticias' %}" class="btn btn-secondary rounded-pill px-3">Cancelar</a>
+</form>
+</div>
+
+{% endblock eliminar %}
+

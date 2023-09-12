@@ -1,0 +1,54 @@
+{% extends 'mainpage.html' %}
+
+{% block content %}
+    <div class="text-center" style="width: 100%;">
+        {% if noticia.portada %}
+        <img style="object-fit: cover;" height="200px" width="100%" src="{{ noticia.portada.url }}">
+        {% endif %}
+    </div>
+<div class="container">
+<div class="container text-center">
+<h1 class="display-4 fst-italic">- {{ noticia.titulo }} -</h1>
+</div>
+{{ noticia.descripcion }}
+<br>
+<div style="margin-top: 4em;" class="container col-lg-8 border border-primary rounded">
+    <form method="POST">
+        {% csrf_token %}
+
+
+        <div class="mb-3">
+        <label for="id_comentario_titulo" class="form-label">Deja un comentario...</label>
+        <input class="form-control" id="id_comentario_titulo" name="titulo" type="text" placeholder="Título" aria-label="Título">
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" id="id_comentario_descripcion" name="descripcion" rows="3" placeholder="Descripción"></textarea>
+        </div>
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary rounded-pill px-3">Comentar</button>
+        </div>
+    </form>
+</div>
+<br><br>
+<h2 class="text-center" style="font-style: italic;">- Comentarios -</h2>
+{% for comentario in comentarios %}
+<div style="margin-top: 1em;" class="container col-lg-8 border border-secondary rounded">
+    
+    <p style="font-style: italic;">
+        {% if comentario.usuario.foto %}
+        <img src="{{comentario.usuario.foto.url}}" style="border-radius: 50%;width: 50px; height: 50px; margin-top: 0.5em;">
+        {%endif%}
+        {% if comentario.usuario %}
+        {{ comentario.usuario.first_name }} {{comentario.usuario.last_name }} 
+        {% else %}
+        Anónimo
+        {% endif %}
+        - {{ comentario.titulo }}
+    </p>
+    <hr style="border-top: 3px solid #0000">
+    {{ comentario.descripcion }}
+    <div style="font-style: italic;" class="text-end">{{ comentario.fecha }}</div>
+</div>
+{%endfor%}
+</div>
+{% endblock content %}

@@ -1,0 +1,123 @@
+{% load static %} {% load bootstrap5 %} {% bootstrap_css %}
+{%bootstrap_javascript %}
+
+<style>
+  .link:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educar para Transformar - Centro Educativo</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" style="
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      ">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+        <a class="navbar-brand col-lg-1 me-0" href="{% url 'index' %}">
+          <img src="{% static 'src/img/EPT-Logo.png' %}" alt="logo" height="75" />
+        </a>
+        <ul class="navbar-nav col-lg-8 justify-content-lg-center">
+          <li class="nav-item">
+            <a class="nav-link active link" aria-current="page" href="{% url 'index' %}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="#id_quienes_somos">¿Quiénes somos?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="#id_niveles_educativos">Niveles Educativos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="{% url 'noticias:lista-noticias-be' %}">Bienestar estudiantil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="{% url 'noticias:lista-noticias' %}">Noticias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="{% url 'inscripciones:inscripcion' %}">Inscribirse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="{% url 'aspirantes:aplicar' %}">Empleo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="#id_contacto">Contacto</a>
+          </li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div class="btn-group">
+          {% if user.foto %}
+          <img src="{{ user.foto.url }}" width="auto" height="40px" class="rounded" style="margin-right: 1em;">
+          {% endif %}
+
+          <button type="button" class="btn btn-primary dropdown-toggle rounded-pill px-3" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{ user.first_name }} {{ user.last_name }}
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'usuarios:editar-perfil' user.id %}">Perfil</a></li>
+            {% if user.rol.id == 1 or user.rol.id == 2 %}
+            <li><a class="dropdown-item" href="{% url 'usuarios:lista-usuarios' %}">Usuarios</a></li>
+            <li><a class="dropdown-item" href="{% url 'inscripciones:lista-inscripciones' %}">Inscripciones</a></li>
+            <li><a class="dropdown-item" href="{% url 'aspirantes:lista-aplicantes' %}">Aplicantes</a></li>
+            <li><a class="dropdown-item" href="{% url 'niveducativos:lista-niveles' %}">Niveles Educativos</a></li>
+
+            {% endif %}
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'usuarios:logout' %}">Cerrar Sesión</a>
+            </li>
+          </ul>
+        </div>
+
+        {% else %}
+        <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+          <a class="btn btn-primary rounded-pill px-3" href="{% url 'usuarios:login' %}">Ingresar <i
+              class="fa-solid fa-door-open"></i></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  {% block eliminar %} {% endblock eliminar %}
+  {% block content %} {% endblock content %}
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-lg-3 d-flex align-items-center">
+      <span class="mb-3 mb-md-0 text-body-secondary">Desarrollado por: &copy; BOCOSO 2023</span>
+    </div>
+    <div class="col-lg-4 text-center fst-italic" style="font-size: 14px;">Bruno Bonifacini, Alan Coradi y Marcelo Sotelo
+    </div>
+    <ul class="nav col-lg-4 justify-content-end list-unstyled d-flex" style="margin-right: 1em;">
+      <li class="ms-3">
+        <a class="text-body-primary" href="https://wa.me/12345678" target="_blank"><i style="font-size: x-large"
+            class="fa-brands fa-whatsapp"></i></a>
+      </li>
+      <li class="ms-3">
+        <a class="text-body-primary" href="https://www.instagram.com/utn_frre/" target="_blank"><i
+            style="font-size: x-large" class="fa-brands fa-instagram"></i></a>
+      </li>
+      <li class="ms-3">
+        <a class="text-body-primary" href="https://www.facebook.com/frreutn/" target="_blank"><i
+            style="font-size: x-large" class="fa-brands fa-facebook"></i></a>
+      </li>
+    </ul>
+  </footer>
+</body>
+
+</html>

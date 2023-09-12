@@ -1,0 +1,51 @@
+{% extends 'mainpage.html' %}
+
+{% block content %}
+<div class="container  col-lg-6 text-lg-center border border-primary rounded" style="margin-top: 1em;">
+  <h1 class="fst-italic">Aplicar</h1>
+  <form method="POST" class="container text-center" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="inputNombre">Nombre</label>
+        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" name="nombre">
+      </div>
+      <div class="form-group">
+        <label for="inputApellido">Apellido</label>
+        <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" name="apellido">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Teléfono</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="36249999" name="telefono">
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Email</label>
+      <input type="email" class="form-control" id="inputAddress2" placeholder="ejemplo@ejemplo.com" name="email">
+    </div>
+    <div class="form-row">
+      <label for="id_comentario">Dejanos un comentario</label>
+      <div class="input-group">
+        <textarea class="form-control" id="id_comentario" aria-label="Comentario" name="comentario"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+
+      <div class="custom-file">
+        <div class="p-2">
+          <label for="id_cv">Curriculum Vitae</label>
+          <input type="file" class="form-control" id="id_cv" name="cv">
+        </div>
+      </div>
+    </div>
+    <div class="text-end" style="margin-top: 1em;">
+      <input type="submit" value="Confirmar" class="btn btn-primary rounded-pill px-3">
+      <a href="{% url 'noticias:lista-noticias' %}" class="btn btn-secondary rounded-pill px-3">Cancelar</a>
+    </div>
+  </form>
+</div>
+
+
+
+{% endblock content %}

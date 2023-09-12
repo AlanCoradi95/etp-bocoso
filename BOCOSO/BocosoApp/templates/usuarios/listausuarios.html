@@ -1,0 +1,55 @@
+{% extends 'mainpage.html' %}
+
+{% block content %}
+<div style="margin-top: 2em;" class="container border border-primary rounded">
+    <caption>Lista de Usuarios</caption>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col"></th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rol</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+
+                <th scope="row">{{ usuario.id }}</th>
+                {% if usuario.foto %}
+                <td><img src="{{ usuario.foto.url }}" width="auto" height="40px" class="rounded"></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.first_name }}</td>
+                <td>{{ usuario.last_name }}</td>
+                <td>{{ usuario.email }}</td>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="number" name="pk" style="display: none;" value="{{ usuario.id }}">
+                    <td>
+                        <select class="form-select" aria-label="Default select example" name="rol">
+                            <option selected>{{ usuario.rol }}</option>
+                            {% for rol in roles %}
+                            <option value="{{rol.id}}">{{rol.nombre}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+
+                    <td>
+                        <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
